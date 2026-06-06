@@ -2,27 +2,12 @@ class Aes67Tools < Formula
   desc "AES67-oriented RTP audio streamer and player"
   homepage "https://github.com/wiccy46/aes67-tools"
   version "0.1.0"
+  url "https://github.com/wiccy46/aes67-tools/releases/download/v#{version}/aes67-tools-#{version}-aarch64-apple-darwin.tar.gz"
+  sha256 "a1f87ab1059c0b3ba7cda69554c9f5b84b38e94402d791d1b407aa8e47b7f9b5"
   license "GPL-3.0-only"
 
-  on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/wiccy46/aes67-tools/releases/download/v#{version}/aes67-tools-#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "a1f87ab1059c0b3ba7cda69554c9f5b84b38e94402d791d1b407aa8e47b7f9b5"
-    else
-      url "https://github.com/wiccy46/aes67-tools/releases/download/v#{version}/aes67-tools-#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "REPLACE_WITH_X86_64_APPLE_DARWIN_SHA256"
-    end
-  end
-
-  on_linux do
-    if Hardware::CPU.arm?
-      url "https://github.com/wiccy46/aes67-tools/releases/download/v#{version}/aes67-tools-#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "REPLACE_WITH_AARCH64_UNKNOWN_LINUX_GNU_SHA256"
-    else
-      url "https://github.com/wiccy46/aes67-tools/releases/download/v#{version}/aes67-tools-#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "REPLACE_WITH_X86_64_UNKNOWN_LINUX_GNU_SHA256"
-    end
-  end
+  depends_on :macos
+  depends_on arch: :arm64
 
   def install
     bin.install "bin/aes67-streamer"
