@@ -1,13 +1,20 @@
 class Aes67Tools < Formula
   desc "AES67-oriented RTP audio streamer and player"
   homepage "https://github.com/wiccy46/aes67-tools"
-  version "0.1.0"
-  url "https://github.com/wiccy46/aes67-tools/releases/download/v#{version}/aes67-tools-#{version}-aarch64-apple-darwin.tar.gz"
-  sha256 "a1f87ab1059c0b3ba7cda69554c9f5b84b38e94402d791d1b407aa8e47b7f9b5"
+  version "0.1.2"
   license "GPL-3.0-only"
 
-  depends_on :macos
-  depends_on arch: :arm64
+  on_macos do
+    depends_on arch: :arm64
+
+    url "https://github.com/wiccy46/aes67-tools/releases/download/v#{version}/aes67-tools-#{version}-aarch64-apple-darwin.tar.gz"
+    sha256 "be82fc2a28b7fa70cca4cfeee0cc84e6a878d0ed5a921c848cf1d1335b783c6a"
+  end
+
+  on_linux do
+    url "https://github.com/wiccy46/aes67-tools/releases/download/v#{version}/aes67-tools-#{version}-x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "c3b389eb129a2fe58c8be781f4e98e870559ec151ec097de24391ae7ee95d8b2"
+  end
 
   def install
     bin.install "bin/aes67-streamer"
